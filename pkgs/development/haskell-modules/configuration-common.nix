@@ -37,11 +37,6 @@ self: super: {
   # Use the default version of mysql to build this package (which is actually mariadb).
   mysql = super.mysql.override { mysql = pkgs.mysql.lib; };
 
-  # Please also remove optparse-applicative special case from
-  # cabal2nix/hackage2nix.hs when removing the following.
-  elm-make = super.elm-make.override { optparse-applicative = self.optparse-applicative_0_10_0; };
-  elm-package = super.elm-package.override { optparse-applicative = self.optparse-applicative_0_10_0; };
-
   # Link the proper version.
   zeromq4-haskell = super.zeromq4-haskell.override { zeromq = pkgs.zeromq4; };
 
