@@ -8,7 +8,7 @@ in {
 
   enablePHP = true;
   extraApacheModules = [ "mod_rewrite" ];
-  DocumentRoot = "${phabricatorRoot}/phabricator/webroot";
+  DocumentRoot = "${phabricatorRoot}/libexec/phabricator/webroot";
 
   options = {
       git = mkOption {
@@ -26,7 +26,7 @@ in {
   };
 
   extraConfig = ''
-      DocumentRoot ${phabricatorRoot}/phabricator/webroot
+      DocumentRoot ${phabricatorRoot}/libexec/phabricator/webroot
 
       RewriteEngine on
       RewriteRule ^/rsrc/(.*) - [L,QSA]
@@ -45,6 +45,7 @@ in {
   startupScript = pkgs.writeScript "activatePhabricator" ''
       mkdir -p /var/repo
       chown wwwrun /var/repo
+      ${pkgs.phabricator}/libexec/phabricator/bin/storage upgrade --force
   '';
 
 }
