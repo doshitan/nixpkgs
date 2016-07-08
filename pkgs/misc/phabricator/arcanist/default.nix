@@ -3,12 +3,12 @@
 
 stdenv.mkDerivation rec {
   name = "arcanist-${version}";
-  version = "2016-05-16";
+  version = "2016-07-08";
 
   src = fetchgit {
     url = "https://github.com/phacility/arcanist.git";
-    rev = "6d175516f54818d02b5fa7d4bc2b290123c3d27f";
-    sha256 = "0i3b849qd6nrb560g1kbazd6szgnca0wc1hvxghqkq3mkmjjrk2p";
+    rev = "f1c45a3323ae20eefe29c0a22c7923fe8b151bbf";
+    sha256 = "1spgnh69cghqb6lpmsf81qcx26l9bgidg909qzs2a43a4g62dz89";
   };
 
   buildInputs = [ php libphutil ];

@@ -3,12 +3,12 @@
 
 stdenv.mkDerivation rec {
   name = "phabricator-${version}";
-  version = "2016-05-16";
+  version = "2016-07-08";
 
   src = fetchgit {
     url = "https://github.com/phacility/phabricator.git";
-    rev = "90c06115e520cd94f13a1a85a4aa63c3dc9cfee0";
-    sha256 = "066b2yyvg4sy19hl254qlgqlagnvr156mqgr77p4yilsrl8zd31d";
+    rev = "58375fa9e6db4a389fd6029ee1ad14ddb0dc9e90";
+    sha256 = "011r35k2p15p85m8b0f93qn6xixbbv6zgm7i0j5hdbaqvdpxkhl0";
   };
 
   buildInputs = [ php arcanist libphutil ];
