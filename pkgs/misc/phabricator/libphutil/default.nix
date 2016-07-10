@@ -16,7 +16,7 @@ stdenv.mkDerivation rec {
   unpackPhase = "true";
   buildPhase = ''
     ORIG=`pwd`
-    cp -R ${libphutil} libphutil
+    cp -R $src libphutil
     chmod +w -R libphutil
     cd libphutil/support/xhpast
     make clean all install
