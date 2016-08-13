@@ -38,8 +38,8 @@ in
       wantedBy = [ "multi-user.target" ];
 
       serviceConfig = {
-        ExecStart = "${pkgs.phabricator}/phabricator/bin/phd start";
-        ExecStop = "${pkgs.phabricator}/phabricator/bin/phd stop";
+        ExecStart = "${pkgs.phabricator}/libexec/phabricator/bin/phd start";
+        ExecStop = "${pkgs.phabricator}/libexec/phabricator/bin/phd stop";
         User = "wwwrun";
         RestartSec = "30s";
         Restart = "always";

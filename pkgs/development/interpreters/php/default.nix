@@ -217,6 +217,10 @@ let
         calendar = {
           configureFlags = ["--enable-calendar"];
         };
+
+        opcache = {
+          configureFlags = ["--enable-opcache"];
+        };
       };
 
       cfg = {
@@ -255,6 +259,7 @@ let
         mssqlSupport = (!php7) && (config.php.mssql or (!stdenv.isDarwin));
         ztsSupport = config.php.zts or false;
         calendarSupport = config.php.calendar or true;
+        opcacheSupport = config.php.opcache or true;
       };
 
       hardeningDisable = [ "bindnow" ];

@@ -3,24 +3,21 @@
 
 stdenv.mkDerivation rec {
   name = "phabricator-${version}";
-  version = "2016-07-08";
+  version = "2016-08-12";
 
   src = fetchgit {
     url = "https://github.com/phacility/phabricator.git";
-    rev = "58375fa9e6db4a389fd6029ee1ad14ddb0dc9e90";
-    sha256 = "011r35k2p15p85m8b0f93qn6xixbbv6zgm7i0j5hdbaqvdpxkhl0";
+    rev = "435f756414e692ad02204bf6cb8f185042cec344";
+    sha256 = "1zw65p2jgkqym7qi61kx121iw9m74lxrrxxxd06j5600y58fqr3r";
   };
 
   buildInputs = [ php arcanist libphutil ];
 
-  unpackPhase = "true";
-  buildPhase = ''
-    cp -R $src phabricator
-    chmod +w -R phabricator
-  '';
+  patches = [ ./conf.patch ];
+
   installPhase = ''
     mkdir -p $out/libexec
-    cp -R phabricator $out/libexec/phabricator
+    cp -R . $out/libexec/phabricator
     ln -s ${libphutil}/libexec/libphutil $out/libexec/libphutil
     ln -s ${arcanist}/libexec/arcanist $out/libexec/arcanist
   '';

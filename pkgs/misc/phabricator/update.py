@@ -10,7 +10,7 @@ import subprocess
 def get_fetchgit_config(repo, ref):
     repo_url = "https://github.com/phacility/" + repo + ".git"
     prefetch_output = subprocess.check_output(["nix-prefetch-git", repo_url, ref])
-    config = json.loads("\n".join(prefetch_output.splitlines()[-5:]))
+    config = json.loads("\n".join(prefetch_output.splitlines()[-6:]))
     return config
 
 
@@ -135,25 +135,13 @@ write_fetchgit_config_project("phabricator", ref, out)
 out.write("""
   buildInputs = [ php arcanist libphutil ];
 
-  unpackPhase = "true";
-  buildPhase = ''
-    cp -R $src phabricator
-    chmod +w -R phabricator
-  '';
+  patches = [ ./conf.patch ];
+
   installPhase = ''
     mkdir -p $out/libexec
-    cp -R phabricator $out/libexec/phabricator
+    cp -R . $out/libexec/phabricator
     ln -s ${libphutil}/libexec/libphutil $out/libexec/libphutil
     ln -s ${arcanist}/libexec/arcanist $out/libexec/arcanist
-
-    # makeWrapper ${php}/bin/php $out/bin/arc \
-    #   --add-flags "-d include_path=${libphutil}/libexec -f $out/libexec/arcanist/scripts/arcanist.php"
-
-    # mkdir -p $out/bin
-    # for i in changePassword.php createAndPromote.php userOptions.php edit.php nukePage.php update.php; do
-    #     makeWrapper ${php}/bin/php $out/bin/mediawiki-${config.id}-$(basename $i .php) \
-    #         --add-flags ${mediawikiRoot}/maintenance/$i
-    # done
   '';
 
   meta = {
