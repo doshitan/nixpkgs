@@ -3,12 +3,12 @@
 
 stdenv.mkDerivation rec {
   name = "libphutil-${version}";
-  version = "2016-08-12";
+  version = "2016-09-09";
 
   src = fetchgit {
     url = "https://github.com/phacility/libphutil.git";
-    rev = "8f8e02d47569dce5f035383d8bcbf7a08481e839";
-    sha256 = "1kr818zlcxg8z79jam6b72y5m8ixsf8lmpm7df5c4w508ywyxdqh";
+    rev = "c14343ee620e43f0ba55eaf80aabcba78c732d45";
+    sha256 = "06xb9d2134a5kskq6xzyf2hj49l0ji4wkxx3mlq82c25an02bi6a";
   };
 
   buildInputs = [ php makeWrapper flex ];

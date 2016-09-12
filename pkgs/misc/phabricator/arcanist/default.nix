@@ -3,12 +3,12 @@
 
 stdenv.mkDerivation rec {
   name = "arcanist-${version}";
-  version = "2016-08-12";
+  version = "2016-09-09";
 
   src = fetchgit {
     url = "https://github.com/phacility/arcanist.git";
-    rev = "c9337c2ade7c76edc98d27c216ab97fc1e40d01c";
-    sha256 = "1sqpqvwj3vgqddpfdbkbgng4smbd24x04k6pldf45vf7a9yrw0wr";
+    rev = "10e5194752901959507223c01e0878e6b8312cc5";
+    sha256 = "0h7ny8wr3cjn105gyzhd4qmhhccd0ilalslsdjj10nxxw2cgn193";
   };
 
   buildInputs = [ bash php libphutil makeWrapper ];
