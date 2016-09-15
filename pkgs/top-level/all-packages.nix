@@ -417,7 +417,7 @@ in
     inherit (pythonPackages) gyp;
   };
 
-  arcanist = callPackage ../misc/phabricator/arcanist {};
+  arcanist = callPackage ../misc/phabricator/arcanist { php = php56; };
 
   arduino = self.arduino-core.override { withGui = true; };
 
@@ -17222,7 +17222,7 @@ in
   libjack2 = self.jack2Full.override { prefix = "lib"; };
   libjack2-git = callPackage ../misc/jackaudio/git.nix { };
 
-  libphutil = callPackage ../misc/phabricator/libphutil { };
+  libphutil = callPackage ../misc/phabricator/libphutil { php = php56; };
 
   keynav = callPackage ../tools/X11/keynav { };
 
@@ -17340,7 +17340,7 @@ in
 
   pgfplots = callPackage ../tools/typesetting/tex/pgfplots { };
 
-  phabricator = callPackage ../misc/phabricator/phabricator { };
+  phabricator = callPackage ../misc/phabricator/phabricator { php = php56; };
 
   physlock = callPackage ../misc/screensavers/physlock { };
 
