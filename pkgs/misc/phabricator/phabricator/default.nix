@@ -6,12 +6,12 @@ let
 in
 stdenv.mkDerivation rec {
   name = "phabricator-${version}";
-  version = "2016-10-03";
+  version = "2016-10-16";
 
   src = fetchgit {
     url = "https://github.com/phacility/phabricator.git";
-    rev = "8dbc3f184092578026563b4a2fe9f7356dd15dee";
-    sha256 = "02xxmn0vh20rjv59lqf5w66amg34b5mrzw66avnjys6mijacmrbz";
+    rev = "c9cc3832912f9c52ec1ea1397c062cc3f8ffc659";
+    sha256 = "048xb155hxm5iqc8wlx64sl3lcn2m423l1mlw3p1g315if1223va";
   };
 
   buildInputs = [ php arcanist libphutil phabricator-npm.package ];
