@@ -1,0 +1,25 @@
+diff --git i/conf/__init_conf__.php w/conf/__init_conf__.php
+index 3dd66b2..b6da512 100644
+--- i/conf/__init_conf__.php
++++ w/conf/__init_conf__.php
+@@ -5,9 +5,18 @@ function phabricator_read_config_file($original_config) {
+ 
+   // Accept either "myconfig" (preferred) or "myconfig.conf.php".
+   $config = preg_replace('/\.conf\.php$/', '', $original_config);
+-  $full_config_path = $root.'/conf/'.$config.'.conf.php';
+ 
+-  if (!Filesystem::pathExists($full_config_path)) {
++  $abs_config_path = $config.'.conf.php';
++  $rel_config_path = $root.'/conf/'.$config.'.conf.php';
++
++  $full_config_path = '';
++  if (Filesystem::pathExists($abs_config_path)) {
++    $full_config_path = $abs_config_path;
++  } elseif (Filesystem::pathExists($rel_config_path)) {
++    $full_config_path = $rel_config_path;
++  }
++
++  if (empty($full_config_path)) {
+     // These are very old configuration files which we used to ship with
+     // by default. File based configuration was de-emphasized once web-based
+     // configuration was built. The actual files were removed to reduce
